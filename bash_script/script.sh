@@ -24,12 +24,3 @@ done
 for rule in "${firewall_rules[@]}"; do
     eval "$rule"
 done
-
-# Restart Snort service to apply the new IDS rules
-service snort restart
-
-# Save the firewall rules
-iptables-save > /etc/iptables/rules.v4
-
-# Restart the firewall service
-service iptables restart
