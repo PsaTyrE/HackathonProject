@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Define the list of IDS rules
 ids_rules=(
     "alert tcp any any -> 192.168.10.0 any (msg:\"Example IDS rule 1\"; content:\"example content\";)"
@@ -15,12 +13,3 @@ firewall_rules=(
     # Add more firewall rules as needed
 )
 
-# Iterate through the IDS rules and append them to the Snort configuration file
-for rule in "${ids_rules[@]}"; do
-    echo "$rule" >> /etc/snort/rules/local.rules
-done
-
-# Iterate through the firewall rules and execute them
-for rule in "${firewall_rules[@]}"; do
-    eval "$rule"
-done
